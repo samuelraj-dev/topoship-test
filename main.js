@@ -22,5 +22,7 @@ const server = () => {
 }
 
 connectDB(server)
-
+app.get('/', (req, res) => {
+    res.status(200).send("Welcome to topoship backend")
+})
 app.use('/api/v1/workouts', workoutsRoutes)
