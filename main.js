@@ -7,7 +7,6 @@ import workoutsRoutes from './routes/workout.js'
 
 const app = express()
 const PORT = process.env.PORT
-const HOST = process.env.HOST
 
 app.use((req, res, next) => {
     console.log(req.method, req.url)
@@ -16,8 +15,8 @@ app.use((req, res, next) => {
 app.use(express.json())
 
 const server = () => {
-    app.listen(PORT, HOST, () => {
-        console.log(`server running at http://${HOST}:${PORT}`)
+    app.listen(PORT, () => {
+        console.log(`server running at PORT:${PORT}`)
     })
 }
 
