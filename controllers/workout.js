@@ -22,7 +22,7 @@ const getWorkout = async (req, res) => {
         return res.status(404).json({ error: `given ID is not of correct format` })
     }
 
-    const workout = await Workout.fineOne({ _id: id, user_id })
+    const workout = await Workout.findOne({ _id: id, user_id })
 
     if(!workout){
         return res.status(404).json({ error: `no such ID found` })
