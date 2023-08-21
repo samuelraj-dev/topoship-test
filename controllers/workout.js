@@ -2,9 +2,11 @@ import mongoose from 'mongoose'
 import Workout from '../models/workout.js'
 
 const getAllWorkouts = async (req, res) => {
+
+    const user_id = req.user._id
     
     try {
-        const workouts = await Workout.find({}).sort( { createdAt: -1 } )
+        const workouts = await Workout.find({ user_id }).sort( { createdAt: -1 } )
         res.status(200).json(workouts)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -14,12 +16,13 @@ const getAllWorkouts = async (req, res) => {
 const getWorkout = async (req, res) => {
 
     const { id } = req.params
+    const user_id = req.user._id
 
     if(!mongoose.isValidObjectId(id)){
         return res.status(404).json({ error: `given ID is not of correct format` })
     }
 
-    const workout = await Workout.findById(id)
+    const workout = await Workout.fineOne({ _id: id, user_id })
 
     if(!workout){
         return res.status(404).json({ error: `no such ID found` })
@@ -48,7 +51,8 @@ const createWorkout = async (req, res) => {
     }
 
     try {
-        const workout = await Workout.create({ title, reps, load })
+        const user_id = req.user._id
+        const workout = await Workout.create({ title, reps, load, user_id })
         res.status(200).json(workout)
     } catch (error) {
         res.status(400).json({ error: error.message })   
