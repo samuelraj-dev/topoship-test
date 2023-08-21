@@ -5,6 +5,7 @@ import cors from 'cors'
 import { connectDB } from './db.js'
 
 import workoutsRoutes from './routes/workout.js'
+import userRoutes from './routes/user.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -28,3 +29,4 @@ app.get('/', (req, res) => {
     res.status(200).send("Welcome to topoship backend")
 })
 app.use('/api/v1/workouts', workoutsRoutes)
+app.use('/api/v1/user', userRoutes)

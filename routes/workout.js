@@ -8,7 +8,11 @@ import {
     deleteWorkout,
 } from '../controllers/workout.js'
 
+import requireAuth from '../middlewares/requireAuth.js'
+
 const router = express.Router()
+
+router.use(requireAuth)
 
 router.get('/', getAllWorkouts)
 router.get('/:id', getWorkout)
