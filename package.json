@@ -5,7 +5,7 @@
   "type": "commonjs",
   "main": "src/index.js",
   "scripts": {
-    "start": "node main",
+    "start": "node src/index",
     "dev": "nodemon -r dotenv/config src/index.js dotenv_config_path=env/local.env"
   },
   "author": "",
