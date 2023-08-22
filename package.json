@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "main": "main.js",
+  "type": "commonjs",
+  "main": "src/index.js",
   "scripts": {
     "start": "node main",
-    "dev": "nodemon main"
+    "dev": "nodemon -r dotenv/config src/index.js dotenv_config_path=env/local.env"
   },
   "author": "",
   "license": "ISC",

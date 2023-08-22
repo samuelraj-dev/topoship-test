@@ -1,14 +1,10 @@
-import express from 'express'
-import 'dotenv/config'
-import cors from 'cors'
-
-import { connectDB } from './db.js'
-
-import workoutsRoutes from './routes/workout.js'
-import userRoutes from './routes/user.js'
+const express = require('express')
+require('dotenv/config')
+const cors = require('cors')
 
 const app = express()
 const PORT = process.env.PORT || 5000
+const HOST = process.env.HOST || 'https://topoship-test.onrender.com'
 
 app.use(cors())
 
@@ -24,9 +20,7 @@ const server = () => {
     })
 }
 
-connectDB(server)
+server()
 app.get('/', (req, res) => {
     res.status(200).send("Welcome to topoship backend")
 })
-app.use('/api/v1/workouts', workoutsRoutes)
-app.use('/api/v1/user', userRoutes)

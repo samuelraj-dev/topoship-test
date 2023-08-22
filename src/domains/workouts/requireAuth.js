@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken'
-import User from '../models/user.js'
+const jwt = require("jsonwebtoken");
+const User = require("../user/model");
 
-export default async function requireAuth (req ,res, next) {
+module.exports = async function requireAuth (req ,res, next) {
 
   const { authorization } = req.headers
 
