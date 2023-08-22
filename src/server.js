@@ -4,7 +4,7 @@ require("dotenv/config");
 const app = require("express")();
 const cors = require("cors");
 const bodyParser = require("express").json();
-const routes = require("./routes");
+const routes = require("./api/v1/routes");
 
 // cors
 app.use(cors());
